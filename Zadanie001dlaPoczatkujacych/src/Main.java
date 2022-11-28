@@ -15,7 +15,9 @@ public class Main {
         //metoda zastępująca metodę "substring" klasy String
         char[] textArray = text.toCharArray();
         String textSub = "";
-        for(int i = 0; i < end - start; i++) textSub = textSub + textArray[i + start];
+        for(int i = start; i < end; i++) {
+            textSub = textSub + textArray[i];
+        }
         return textSub;
     }
 
@@ -26,7 +28,6 @@ public class Main {
         do {
             whereToIs++;
             currentText = subString(text, whereToIs, whereToIs+2);
-
         }
         while(!currentText.equals(partText));
         return whereToIs;
