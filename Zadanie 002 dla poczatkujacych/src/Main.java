@@ -30,18 +30,10 @@ public class Main {
         while (i < size - 1) {
             j = i + 1;
             repeats = 1;
-            while (j<size) {
-                if(filtered.get(j).equals(filtered.get(i))) {
-                    if(repeats >= maxRepeats) {
-                        filtered.remove(j);
-                        j--;
-                        size--;
-                    } else {
-                        repeats++;
-                    }
-                }
-                j++;
-            }
+            filtered.stream()
+                    .count()
+                    .
+        }
             i++;
         }
         return filtered;
