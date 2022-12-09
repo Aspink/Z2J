@@ -26,16 +26,15 @@ public class Main {
 
     public static ArrayList<Integer> filter(ArrayList<Integer> unfiltered, int maxRepeats) {
         ArrayList<Integer> filtered = new ArrayList<>(unfiltered);
-        int size = filtered.size(), i = 0, j, repeats;
-        while (i < size - 1) {
-            j = i + 1;
-            repeats = 1;
-            filtered.stream()
-                    .count()
-                    .
+        Map<Integer, int> countNumbers = new HashMap<Integer, int>;
+        for (Integer number: filtered) {
+            switch (countNumbers.get(number)) {
+                case null:
+                    countNumbers.put(number, 1);
+                    break;
+                case 1:
+                    countNumbers.put(number, 2);
+            }
         }
-            i++;
-        }
-        return filtered;
     }
 }
