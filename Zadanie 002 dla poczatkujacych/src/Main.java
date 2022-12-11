@@ -27,19 +27,22 @@ public class Main {
     public static ArrayList<Integer> filter(ArrayList<Integer> unfiltered, Integer maxRepeats) {
         ArrayList<Integer> filtered = new ArrayList<>(unfiltered);
         Map<Integer, Integer> countNumbers = new HashMap<>();
-        Integer count;
+        Integer count, number;
         int i = 0;
-        for (Integer number: filtered) {
+        do {
+            number = filtered.get(i);
             count = countNumbers.get(number);
             if (count == null) {
                 countNumbers.put(number, 1);
             } else if (count < maxRepeats) {
-                countNumbers.put(number, count+1);
+                    countNumbers.put(number, count+1);
             } else {
                 filtered.remove(i);
+                i--;
             }
             i++;
-        }
+        } while (i < filtered.size());
+        System.out.println("countNumbers: " + countNumbers);
         return filtered;
     }
 }
