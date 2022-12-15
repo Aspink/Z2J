@@ -25,23 +25,14 @@ public class Main {
     }
 
     public static ArrayList<Integer> filter(ArrayList<Integer> unfiltered, Integer maxRepeats) {
-        ArrayList<Integer> filtered = new ArrayList<>(unfiltered);
+        ArrayList<Integer> filtered = new ArrayList<>();
         Map<Integer, Integer> countNumbers = new HashMap<>();
-        Integer count, number;
-        int i = 0;
-        do {
-            number = filtered.get(i);
-            count = countNumbers.get(number);
-            if (count == null) {
-                countNumbers.put(number, 1);
-            } else if (count < maxRepeats) {
-                    countNumbers.put(number, count+1);
-            } else {
-                filtered.remove(i);
-                i--;
+        for(Integer number : unfiltered) {
+            countNumbers.merge(number, 1, Integer::sum);
+            if(countNumbers.get(number) <= maxRepeats) {
+                filtered.add(number);
             }
-            i++;
-        } while (i < filtered.size());
+        }
         System.out.println("countNumbers: " + countNumbers);
         return filtered;
     }
